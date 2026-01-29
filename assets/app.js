@@ -10,16 +10,19 @@ const siteTagline = document.getElementById("siteTagline");
 const countEl = document.getElementById("count");
 
 const metaTitle = document.getElementById("metaTitle");
-const metaLine = document.getElementById("metaLine");
 const metaYear = document.getElementById("metaYear");
 const metaMedium = document.getElementById("metaMedium");
 const metaSize = document.getElementById("metaSize");
 const metaCredit = document.getElementById("metaCredit");
 const metaLinks = document.getElementById("metaLinks");
 
+// Footer contact toggle elements (exist in index.html)
+const contactBtn = document.getElementById("contactBtn");
+const contactEmail = document.getElementById("contactEmail");
+
 let lastFocusedEl = null;
 
-// --- helpers ---
+// ---------- helpers ----------
 function safeText(v) {
   return v === undefined || v === null || v === "" ? "—" : String(v);
 }
@@ -28,9 +31,9 @@ function isNonEmpty(v) {
   return !(v === undefined || v === null || String(v).trim() === "");
 }
 
-// basic focus trap for modal
+// ---------- modal focus trap ----------
 function trapFocus(e) {
-  if (modal.getAttribute("aria-hidden") === "true") return;
+  if (!modal || modal.getAttribute("aria-hidden") === "true") return;
 
   const focusables = modal.querySelectorAll(
     'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
@@ -52,6 +55,7 @@ function trapFocus(e) {
   }
 }
 
+// ---------- modal open/close ----------
 function openModal(work) {
   lastFocusedEl = document.activeElement;
 
@@ -59,13 +63,8 @@ function openModal(work) {
   modalImg.src = src;
   modalImg.alt = work.alt || work.title || "Artwork";
 
+  // Museum-y catalog style: Title is just another dt/dd entry
   metaTitle.textContent = safeText(work.title);
-
-  const bits = [];
-  if (isNonEmpty(work.id)) bits.push(work.id);
-  if (Array.isArray(work.tags) && work.tags.length) bits.push(work.tags.join(" · "));
-  metaLine.textContent = bits.join(" — ");
-
   metaYear.textContent = safeText(work.year);
   metaMedium.textContent = safeText(work.medium);
   metaSize.textContent = safeText(work.size);
@@ -83,31 +82,32 @@ function openModal(work) {
 
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
-  modalClose.focus();
+  modalClose?.focus();
 }
 
 function closeModal() {
-  modal.setAttribute("aria-hidden", "true");
+  modal?.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
-  modalImg.src = "";
+  if (modalImg) modalImg.src = "";
   if (lastFocusedEl) lastFocusedEl.focus();
 }
 
-modalClose.addEventListener("click", closeModal);
+modalClose?.addEventListener("click", closeModal);
 
 // click backdrop to close
-modal.addEventListener("click", (e) => {
+modal?.addEventListener("click", (e) => {
   if (e.target === modal) closeModal();
 });
 
 // esc + focus trap
 window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && modal.getAttribute("aria-hidden") === "false") closeModal();
+  if (e.key === "Escape" && modal?.getAttribute("aria-hidden") === "false") closeModal();
   trapFocus(e);
 });
 
-// render grid
+// ---------- grid render ----------
 function renderGrid(works) {
+  if (!gridEl) return;
   gridEl.innerHTML = "";
 
   works.forEach((work) => {
@@ -137,14 +137,15 @@ function renderGrid(works) {
     cap.className = "caption";
 
     const line1 = document.createElement("div");
+    line1.className = "line1";
     line1.textContent = isNonEmpty(work.index_display_1) ? work.index_display_1 : "";
     cap.appendChild(line1);
 
     const line2 = document.createElement("div");
+    line2.className = "line2";
     line2.textContent = isNonEmpty(work.index_display_2) ? work.index_display_2 : "";
     cap.appendChild(line2);
 
-    // Put caption inside the same padded box as the image
     btn.appendChild(cap);
 
     card.appendChild(btn);
@@ -152,33 +153,83 @@ function renderGrid(works) {
   });
 }
 
+// ---------- footer: CONTACT.EXE reveal/hide ----------
+function setupContactReveal() {
+  if (!contactBtn || !contactEmail) return;
+
+  let revealed = false;
+
+  function buildEmailFromDataset(btn) {
+    const u = btn.dataset.u || "";
+    const d = btn.dataset.d || "";
+    const t = btn.dataset.t || "";
+    if (!u || !d || !t) return "";
+    return `${u}@${d}.${t}`;
+  }
+
+  function render() {
+    if (!revealed) {
+      contactEmail.textContent = "";
+      contactBtn.setAttribute("aria-label", "Reveal contact email");
+      return;
+    }
+    const email = buildEmailFromDataset(contactBtn);
+    contactEmail.textContent = email ? email : "Email not configured yet.";
+    contactBtn.setAttribute("aria-label", "Hide contact email");
+  }
+
+  contactBtn.addEventListener("click", () => {
+    revealed = !revealed;
+    render();
+  });
+
+  render();
+}
+
+// ---------- load JSON ----------
 async function loadGallery() {
   try {
-    statusEl.textContent = "Loading…";
+    if (statusEl) statusEl.textContent = "Loading…";
 
     const res = await fetch("./data/gallery.json", { cache: "no-store" });
     if (!res.ok) throw new Error(`Failed to load JSON (${res.status})`);
 
     const data = await res.json();
 
-    if (data.site?.title) siteTitle.textContent = data.site.title;
-    if (data.site?.tagline) siteTagline.textContent = data.site.tagline;
+    if (data.site?.title && siteTitle) siteTitle.textContent = data.site.title;
+    if (data.site?.tagline && siteTagline) siteTagline.textContent = data.site.tagline;
 
     const works = Array.isArray(data.works) ? data.works.slice() : [];
     works.sort((a, b) => (a.order ?? 999999) - (b.order ?? 999999));
 
-    countEl.textContent = works.length ? `${works.length} works` : "";
+    if (countEl) countEl.textContent = works.length ? `${works.length} works` : "";
 
     renderGrid(works);
 
-    statusEl.textContent = works.length
-      ? ""
-      : "No works yet. Add items to data/gallery.json.";
+    if (statusEl) {
+      statusEl.textContent = works.length
+        ? ""
+        : "No works yet. Add items to data/gallery.json.";
+    }
   } catch (err) {
     console.error(err);
-    statusEl.textContent =
-      "Could not load gallery.json. Make sure you're running a local server (not file://).";
+    if (statusEl) {
+      statusEl.textContent =
+        "Could not load gallery.json. Make sure you're running a local server (not file://).";
+    }
   }
 }
 
+// ---------- light protection (not bulletproof) ----------
+document.addEventListener("contextmenu", (e) => {
+  const isImage = e.target && e.target.tagName === "IMG";
+  if (isImage) e.preventDefault();
+});
+document.addEventListener("dragstart", (e) => {
+  const isImage = e.target && e.target.tagName === "IMG";
+  if (isImage) e.preventDefault();
+});
+
+// boot
+setupContactReveal();
 loadGallery();
