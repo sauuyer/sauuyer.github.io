@@ -1,0 +1,73 @@
+{
+  "site": {
+    "title": "Sauuyer",
+    "tagline": "art portfolio"
+  },
+  "works": [
+    {
+      "id": "2026_01_computer_coral_landscape",
+      "title": "Computer coral landscape",
+      "year": "2026",
+      "medium": "Mixed media collage",
+      "size": "—",
+      "image": "works/2026_01_computer_coral_landscape.jpg",
+      "image2x": "works/2026_01_computer_coral_landscape.jpg",
+      "alt": "Description of collage titled Title of Work One",
+      "credit": "",
+      "srcUrl": "",
+      "index_display_1": "2–34",
+      "index_display_2": "F. Kuenstler",
+      "tags": ["grid", "marquee"],
+      "order": 1
+    },
+    {
+      "id": "2026_02_ctding-for-data",
+      "title": "CTDing for data",
+      "year": "2026",
+      "medium": "Digital collage",
+      "size": "—",
+      "image": "works/2026_02_ctding-for-data.jpg",
+      "image2x": "works/2026_02_ctding-for-data.jpg",
+      "alt": "Description of collage titled Title of Work Two",
+      "credit": "",
+      "srcUrl": "",
+      "index_display_1": "2–34",
+      "index_display_2": "F. Kuenstler",
+      "tags": ["grid", "marquee"],
+      "order": 2
+    },
+    {
+      "id": "2026_03_fishing-data-landscape",
+      "title": "Fishing data landscape",
+      "year": "2026",
+      "medium": "Mixed media collage",
+      "size": "—",
+      "image": "works/2026_03_fishing-data-landscape.jpg",
+      "image2x": "works/2026_03_fishing-data-landscape.jpg",
+      "alt": "Description of collage titled Title of Work Three",
+      "credit": "",
+      "srcUrl": "",
+      "index_display_1": "2–34",
+      "index_display_2": "F. Kuenstler",
+      "tags": ["grid"],
+      "order": 3
+    },
+    {
+      "id": "2026_04_science_hands",
+      "title": "Science hands",
+      "year": "2026",
+      "medium": "Analog collage",
+      "size": "—",
+      "image": "works/2026_04_science-hands.jpg",
+      "image2x": "works/2026_04_science-hands.jpg",
+      "alt": "Description of collage titled Title of Work Four",
+      "credit": "",
+      "srcUrl": "",
+      "index_display_1": "2–34",
+      "index_display_2": "F. Kuenstler",
+      "tags": ["grid"],
+      "order": 4
+    }
+  ]
+}
+
