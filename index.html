@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Collage</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">YOUR NAME</a>
+    <nav class="nav">
+      <a href="/" aria-current="page">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="gallery" aria-label="Work gallery">
+      <!-- Item -->
+      <figure class="tile">
+        <button class="tile-btn" type="button"
+          data-full="assets/img/piece-01.jpg"
+          data-alt="Collage title 01"
+          data-caption="2-34<br>F. Kuenstler<br><a href='https://www.google.com' target='_blank' rel='noopener'>SRC</a>">
+          <img loading="lazy" src="assets/img/piece-01.jpg" alt="Collage title 01" />
+        </button>
+        <figcaption class="caption">
+          2-34<br>
+          F. Kuenstler<br>
+          <a href="https://www.google.com" target="_blank" rel="noopener">SRC</a>
+        </figcaption>
+      </figure>
+
+      <!-- Duplicate tiles as needed -->
+      <figure class="tile">
+        <button class="tile-btn" type="button"
+          data-full="assets/img/piece-02.jpg"
+          data-alt="Collage title 02"
+          data-caption="BB09<br>R. Dijkstra<br><a href='https://www.google.com' target='_blank' rel='noopener'>SRC</a>">
+          <img loading="lazy" src="assets/img/piece-02.jpg" alt="Collage title 02" />
+        </button>
+        <figcaption class="caption">
+          BB09<br>
+          R. Dijkstra<br>
+          <a href="https://www.google.com" target="_blank" rel="noopener">SRC</a>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section id="about" class="info">
+      <h2>About</h2>
+      <p>Short bio. Mediums, themes, exhibitions, etc.</p>
+    </section>
+
+    <section id="contact" class="info">
+      <h2>Contact</h2>
+      <p><a href="mailto:you@example.com">you@example.com</a></p>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <dialog class="lightbox" id="lightbox">
+    <button class="lb-close" type="button" aria-label="Close">×</button>
+    <figure class="lb-figure">
+      <img id="lb-img" alt="" />
+      <figcaption id="lb-cap" class="lb-cap"></figcaption>
+    </figure>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
