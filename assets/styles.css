@@ -1,0 +1,365 @@
+/* assets/styles.css
+   Minimal, clean gallery styles:
+   - fixed thumbnail width, variable height (keeps aspect ratio)
+   - bottom-aligned rows (like your reference screenshot)
+   - modal + metadata panel
+   - density toggle support via .grid[data-density="tight"]
+*/
+
+/* ---------- Base / Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.35;
+  color: #111;
+  background: #fff;
+}
+
+/* ---------- Theme tokens ---------- */
+:root {
+  /* thumbnail sizing */
+  --thumb-w: 140px;
+  --thumb-w-tight: 110px;
+
+  /* spacing */
+  --page-pad: 28px;
+  --gap: 12px;
+  --tight-gap: 8px;
+
+  /* UI */
+  --border: 1px solid rgba(0, 0, 0, 0.12);
+  --muted: rgba(0, 0, 0, 0.55);
+  --muted-2: rgba(0, 0, 0, 0.35);
+
+  --radius: 10px;
+  --tight-radius: 6px;
+
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- Layout ---------- */
+.site {
+  min-height: 100vh;
+  padding: var(--page-pad);
+}
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  font-weight: 600;
+}
+
+.brand .sub {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.control label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.control input[type="search"] {
+  appearance: none;
+  border: var(--border);
+  border-radius: 999px;
+  padding: 8px 10px;
+  font: inherit;
+  width: 240px;
+}
+
+.control select,
+.control button,
+.control input[type="checkbox"] {
+  font: inherit;
+}
+
+/* Simple button */
+.btn {
+  appearance: none;
+  border: var(--border);
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* ---------- Gallery (the important part) ---------- */
+/* Wrapping row layout with bottom-aligned items */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end; /* key: bottom align differing heights */
+  gap: var(--gap);
+}
+
+/* Each card has a fixed width; height is determined by image ratio */
+.card {
+  width: var(--thumb-w);
+  flex: 0 0 var(--thumb-w);
+  background: transparent;
+  border-radius: 0; /* crisp like your screenshot */
+}
+
+/* Use a button wrapper so it's keyboard accessible */
+.card button {
+  all: unset;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Thumbnail respects original aspect ratio */
+.thumb {
+  display: block;
+  width: 100%;
+  height: auto; /* key: preserve aspect ratio */
+}
+
+/* Optional caption under thumbs */
+.caption {
+  margin-top: 6px;
+  font-size: 10px;
+  line-height: 1.15;
+  letter-spacing: 0.2px;
+  color: #777;
+  user-select: none;
+  white-space: pre-line; /* lets you do 2+ lines with \n */
+}
+
+/* Tight mode toggled by JS: grid.dataset.density = "tight" */
+.grid[data-density="tight"] {
+  gap: var(--tight-gap);
+}
+
+.grid[data-density="tight"] .card {
+  width: var(--thumb-w-tight);
+  flex-basis: var(--thumb-w-tight);
+}
+
+/* ---------- Modal (image + metadata) ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 50;
+}
+
+.modal[aria-hidden="false"] {
+  display: block;
+}
+
+.modal .backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.modal .dialog {
+  position: relative;
+  width: min(1100px, calc(100vw - 40px));
+  height: min(760px, calc(100vh - 40px));
+  margin: 20px auto;
+  background: #fff;
+  border: var(--border);
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  overflow: hidden;
+}
+
+.modal .viewer {
+  position: relative;
+  padding: 18px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+}
+
+.modal .viewer img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.modal .panel {
+  border-left: var(--border);
+  padding: 16px;
+  overflow: auto;
+}
+
+.modal .panel h2 {
+  margin: 0 0 10px 0;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.meta {
+  display: grid;
+  gap: 10px;
+}
+
+.meta .row {
+  display: grid;
+  gap: 4px;
+}
+
+.meta .k {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.meta .v {
+  font-size: 13px;
+  color: #111;
+  word-break: break-word;
+}
+
+.meta a {
+  color: #111;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 0, 0, 0.25);
+  text-underline-offset: 2px;
+}
+
+.meta a:hover {
+  text-decoration-color: rgba(0, 0, 0, 0.6);
+}
+
+/* modal close button */
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: var(--border);
+  background: #fff;
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.modal .close:hover {
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- “Drawer” style metadata (optional alternative)
+   If your JS uses a side drawer instead of a modal panel,
+   these styles won’t hurt anything; they only apply if present. ---------- */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(420px, 92vw);
+  height: 100vh;
+  background: #fff;
+  border-left: var(--border);
+  box-shadow: var(--shadow);
+  transform: translateX(100%);
+  transition: transform 180ms ease;
+  z-index: 60;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.drawer[aria-hidden="false"] {
+  transform: translateX(0);
+}
+
+.drawer .drawer-head {
+  padding: 14px 14px 10px 14px;
+  border-bottom: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.drawer .drawer-body {
+  padding: 14px;
+  overflow: auto;
+}
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 900px) {
+  :root {
+    --thumb-w: 120px;
+    --thumb-w-tight: 95px;
+    --page-pad: 18px;
+  }
+
+  .modal .dialog {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    height: min(820px, calc(100vh - 40px));
+  }
+
+  .modal .panel {
+    border-left: none;
+    border-top: var(--border);
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --thumb-w: 105px;
+    --thumb-w-tight: 85px;
+  }
+
+  .control input[type="search"] {
+    width: 180px;
+  }
+}
