@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div>
+      <h1 id="siteTitle" class="site-title">sawyer newman portfolio</h1>
+      <p id="siteTagline" class="site-tagline"></p>
+    </div>
+    <p class="site-count" id="count"></p>
+  </header>
+
+  <body>
+    <header class="site-header">
+      <div>
+        <h1 class="site-title">about</h1>
+        <p class="site-tagline"></p>
+      </div>
+      <!-- count is optional on About; keep for alignment -->
+      <p class="site-count"></p>
+    </header>
+  
+    <main class="site-main">
+      <section class="about-page" aria-label="About">
+        <p class="about-lede">
+          Fill in other text here.
+        </p>
+  
+        <hr class="about-rule" />
+  
+        <div class="about-grid">
+          <section class="about-block">
+            <h4 class="about-heading">Professional themes</h4>
+            <ul class="about-list">
+              <li>Research data management & tools</li>
+              <li>Data & information systems</li>
+              <li>Web design & management</li>
+              <li>Librarianship</li>
+              <li>Archival research, digitization, and metadata</li>
+              <li>HTML, Python, R, CSS, JS</li>
+            </ul>
+          </section>
+  
+          <section class="about-block">
+            <h2 class="about-heading">Past & present employeers</h2>
+            <ul class="about-list">
+              <li>Woods Hole Oceanographic Institution</li>
+              <li>Biological and Chemical Oceanography Data Management Office</li>
+              <li>Ocean Observatories Initiative</li>
+              <li>Falmouth Running Club</li>
+              ^ present  - - - past v
+              <li>Harvey Cushing/John Hay Whitney Library @ Yale Medical School</li>
+              <li>IT Research Data Management Team @ Harvard Medical School</li>
+              <li>Snell Library @ Northeastern University</li>
+              <li>University Archives and Historical Collections @ Michigan Technological University</li>
+              <li>Van Pelt and Opie Library @ Michigan Technological University</li>
+            </ul>
+          </section>
+  
+          <section class="about-block">
+            <h2 class="about-heading">Other interests</h2>
+            <ul class="about-list">
+              <li>Art & design</li>
+              <li>Beekeeping</li>
+              <li>Entrepreneurship</li>
+            </ul>
+          </section>
+  
+        </div>
+      </section>
+    </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <!-- LEFT: About -->
+    <div class="site-footer__left">
+      <p class="footer-about">
+        <strong>About</strong><br>
+        Exploration through art, design,<br>data and coding projects. Based<br>in Massachussets, from the Great<br>Lakes. <a href="index.html">See main gallery</a>.
+      </p>
+    </div>
+
+    <!-- CENTER: Buy Me a Coffee -->
+    <div class="site-footer__center">
+      <a
+        class="coffee-link"
+        href="https://www.buymeacoffee.com/YOURNAME"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        Buy me a coffee ☕
+      </a>
+    </div>
+
+    <!-- RIGHT: Contact toggle -->
+    <div class="site-footer__right">
+      <div class="footer-contact">
+        <p class="contact-note" id="contactNote">
+          If you would like to work together, click the button to see my email.
+          <span class="contact-note__hint"></span>
+        </p>
+        <button
+          id="contactBtn"
+          class="contact-btn"
+          type="button"
+          aria-label="Reveal contact email"
+          data-u="sauuyer"
+          data-d="gmail"
+          data-t="com"
+        >
+          contact.me
+        </button>
+        <p class="contact-email" id="contactEmail" aria-live="polite"></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/app.js" defer></script>
+</body>
+</html>
+
+</body>
+</html>

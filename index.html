@@ -10,11 +10,15 @@
 <body>
   <header class="site-header">
     <div>
-      <h1 id="siteTitle" class="site-title">Collage Portfolio</h1>
+      <h1 id="siteTitle" class="site-title">sawyer newman portfolio</h1>
       <p id="siteTagline" class="site-tagline"></p>
     </div>
     <p class="site-count" id="count"></p>
   </header>
+  <div>
+        <h1 class="site-title">portfolio</h1>
+        <p class="site-tagline"></p>
+      </div>
 
   <main class="site-main">
     <div id="status" class="status">Loading…</div>
@@ -31,20 +35,65 @@
       </div>
 
       <div class="modal__meta">
-        <h2 id="metaTitle"></h2>
-        <p id="metaLine"></p>
+        
 
         <dl>
+          <dt>Title</dt><dd id="metaTitle">-</dd>
           <dt>Year</dt><dd id="metaYear">—</dd>
           <dt>Medium</dt><dd id="metaMedium">—</dd>
           <dt>Size</dt><dd id="metaSize">—</dd>
-          <dt>Credit</dt><dd id="metaCredit">—</dd>
+          <dt>Credit notes</dt><dd id="metaCredit">—</dd>
         </dl>
 
         <div id="metaLinks"></div>
       </div>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <!-- LEFT: About -->
+    <div class="site-footer__left">
+      <p class="footer-about">
+        <strong>About</strong><br>
+        Exploration through art, design,<br>data and coding projects. Based<br>in Massachussets, from the Great<br>Lakes. <a href="about.html">More.</a>
+      </p>
+    </div>
+
+    <!-- CENTER: Buy Me a Coffee -->
+    <div class="site-footer__center">
+      <a
+        class="coffee-link"
+        href="https://www.buymeacoffee.com/YOURNAME"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        Buy me a coffee ☕
+      </a>
+    </div>
+
+    <!-- RIGHT: Contact toggle -->
+    <div class="site-footer__right">
+      <div class="footer-contact">
+        <p class="contact-note" id="contactNote">
+          If you would like to work together, click the button to see my email.
+          <span class="contact-note__hint"></span>
+        </p>
+        <button
+          id="contactBtn"
+          class="contact-btn"
+          type="button"
+          aria-label="Reveal contact email"
+          data-u="sauuyer"
+          data-d="gmail"
+          data-t="com"
+        >
+          contact.me
+        </button>
+        <p class="contact-email" id="contactEmail" aria-live="polite"></p>
+      </div>
+    </div>
+  </footer>
 
   <script src="./assets/app.js" defer></script>
 </body>
