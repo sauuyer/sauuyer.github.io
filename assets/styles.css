@@ -306,7 +306,12 @@ body {
 /* CENTER */
 .site-footer__center {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  justify-self: center; /* ← this is the key */
+  text-align: center;   /* ensures text aligns cleanly */
 }
 
 .coffee-link {
@@ -322,21 +327,36 @@ body {
   text-decoration-color: rgba(0, 0, 0, 0.6);
 }
 
+.template-link {
+  font-size: 11px;
+  color: #111;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 0, 0, 0.25);
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+.template-link:hover {
+  text-decoration-color: rgba(0, 0, 0, 0.6);
+}
+
 /* RIGHT */
 .site-footer__right {
   display: flex;
   justify-content: flex-end;
+
+  justify-self: end;   
 }
 
 .footer-contact {
   display: grid;
-  justify-items: end;
+  justify-items: end;  
   gap: 6px;
   min-width: 240px;
   text-align: right;
 }
 
-/* 90s-ish contact button */
+/* Contact button */
 .contact-btn {
   font: inherit;
   letter-spacing: 0.3px;
