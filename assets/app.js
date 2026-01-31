@@ -153,6 +153,22 @@ function renderGrid(works) {
   });
 }
 
+// ----------- footer: LOADER ------------------
+
+async function loadFooter() {
+  const el = document.getElementById("site-footer");
+  if (!el) return;
+
+  try {
+    const res = await fetch("/partials/footer.html");
+    el.innerHTML = await res.text();
+  } catch (err) {
+    console.error("Failed to load footer", err);
+  }
+}
+
+loadFooter();
+
 // ---------- footer: CONTACT.EXE reveal/hide ----------
 function setupContactReveal() {
   if (!contactBtn || !contactEmail) return;
