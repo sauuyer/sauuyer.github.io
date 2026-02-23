@@ -99,6 +99,22 @@
       "index_display_2": "landscape",
       "tags": ["grid"],
       "order": 6
+    },
+    {
+      "id": "2026_07_seiche_p5js",
+      "title": "Seiche and Storm Waves",
+      "year": "2026",
+      "medium": "programming / p5js",
+      "size": "N/A",
+      "image": "works/programs/p5js/seiche_and_storm_waves/stills/seiche_large_lake_storm_storm-peak.png",
+      "image2x": "works/programs/p5js/seiche_and_storm_waves/stills/seiche_large_lake_storm_storm-peak.png",
+      "alt": "",
+      "credit": "",
+      "srcUrl": "seiche.html",
+      "index_display_1": "Data visualization",
+      "index_display_2": "programming",
+      "tags": ["grid"],
+      "order": 7
     }
   ]
 }

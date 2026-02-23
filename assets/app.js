@@ -16,6 +16,7 @@ const metaSize = document.getElementById("metaSize");
 const metaCredit = document.getElementById("metaCredit");
 const metaLinks = document.getElementById("metaLinks");
 
+
 // Footer contact toggle elements (exist in index.html)
 const contactBtn = document.getElementById("contactBtn");
 const contactEmail = document.getElementById("contactEmail");
@@ -76,7 +77,7 @@ function openModal(work) {
     a.href = work.srcUrl;
     a.target = "_blank";
     a.rel = "noreferrer noopener";
-    a.textContent = "SRC";
+    a.textContent = "View the full render of this piece ->";
     metaLinks.appendChild(a);
   }
 

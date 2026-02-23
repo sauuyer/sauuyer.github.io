@@ -1,14 +1,142 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Seiche and Storm</title>
-    <script src="assets/p5/p5.min.js"></script>
-    <script src="assets/p5/addons/p5.sound.min.js"></script>
-    <script src="works/programs/p5js/seiche_and_storm_waves/seiche_and_storm_waves.js"></script>
-    <style>
-      body { margin: 0; overflow: hidden; background: #b5cbf9; }
-    </style>
-  </head>
-  <body></body>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Seiche and Storm</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+
+  <link rel="stylesheet" href="assets/styles.css" />
+
+
+  <style>
+    .work-page {
+      max-width: 900px;
+      margin-top: 10px;
+    }
+
+    .work-title {
+      margin: 0 0 6px 0;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      font-weight: 600;
+    }
+
+    .work-text {
+      font-size: 12px;
+      line-height: 1.5;
+      max-width: 60ch;
+      margin-bottom: 18px;
+    }
+
+    .work-canvas {
+      padding: 18px;
+      background: #fff;
+    }
+  </style>
+
+  <!-- p5 -->
+  <script src="assets/p5/p5.min.js"></script>
+  <script src="assets/p5/addons/p5.sound.min.js"></script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div>
+    <h1 class="site-title">Sawyer Newman</h1>
+    <p class="site-tagline">portfolio</p>
+  </div>
+</header>
+
+<main class="site-main">
+
+  <div class="work-page">
+
+    <h2 class="work-title">Seiche and Storm Waves</h2>
+
+    <div class="work-text">
+      <p>
+        Notes:<br>
+        A data visualization exploring oscillatory water motion and
+        environmental forcing. This computational doodle shows a constant seiche resonance, 
+        storm waves temporarily adding texture along the seiche base, then bird
+        flight patterns passing by after the storm has cleared.
+      </p>
+
+      <p>
+        Medium:<br>
+        p5.js / environmental systems / data visualization
+      </p>
+    </div>
+
+    <div class="work-canvas">
+      <div id="sketch-holder"></div>
+    </div>
+
+  </div>
+
+</main>
+
+<script src="works/programs/p5js/seiche_and_storm_waves/seiche_and_storm_waves.js"></script>
+
+ <!-- Footer -->
+ <footer class="site-footer">
+  <!-- LEFT: About -->
+   <!-- LEFT: About -->
+   <div class="site-footer__left">
+    <p class="footer-about">
+      <!--<strong>About</strong><br>  -->
+      Exploration through art, design,<br>data and coding projects. Based<br>in Massachusetts, from the Great<br>Lakes. <a href="index.html">See main gallery</a>.
+    </p>
+  </div>
+
+  <!-- CENTER -->
+  <div class="site-footer__center">
+    <div class="footer-center-stack">
+      <a
+        class="coffee-link"
+        href="https://buymeacoffee.com/sauuyer"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        Buy me a coffee ☕
+      </a>
+      <br><br>
+      <a
+        class="template-link"
+        href="https://github.com/sauuyer/sauuyer.github.io"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        Use this portfolio template
+      </a>
+    </div>
+  </div>
+
+  <!-- RIGHT: Contact toggle -->
+  <div class="site-footer__right">
+    <div class="footer-contact">
+      <p class="contact-note" id="contactNote">
+        If you would like to work together, click the button to see my email.
+        <span class="contact-note__hint"></span>
+      </p>
+      <button
+        id="contactBtn"
+        class="contact-btn"
+        type="button"
+        aria-label="Reveal contact email"
+        data-u="sauuyer"
+        data-d="gmail"
+        data-t="com"
+      >
+        contact.me
+      </button>
+      <p class="contact-email" id="contactEmail" aria-live="polite"></p>
+    </div>
+  </div>
+</footer>
+
+<script src="./assets/app.js" defer></script>
+</body>
 </html>
