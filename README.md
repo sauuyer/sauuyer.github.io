@@ -110,7 +110,7 @@ https://YOUR-USERNAME.github.io
 
 ---
 
-## Image Use and Protection (Important Note)
+## Image Use and Protection
 
 This is a portfolio, not a DRM system.
 
