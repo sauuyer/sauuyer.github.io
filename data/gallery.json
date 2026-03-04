@@ -55,7 +55,7 @@
     {
       "id": "2026_04_science_hands",
       "title": "Science hands",
-      "year": "2026",
+      "year": "2025",
       "medium": "Analog collage",
       "size": "4 x 6 in; 10.16 x 15.24 cm",
       "image": "works/art/2026_04_science-hands.jpg",
@@ -111,10 +111,26 @@
       "alt": "",
       "credit": "",
       "srcUrl": "seiche.html",
-      "index_display_1": "Data visualization",
+      "index_display_1": "data visualization",
       "index_display_2": "programming",
       "tags": ["grid"],
       "order": 7
+    },
+    {
+      "id": "2026_08_data_catalog_interface",
+      "title": "Data catalog demo",
+      "year": "2026",
+      "medium": "programming / fuse.js / html",
+      "size": "N/A",
+      "image": "works/programs/web/data_catalog/stills/data_catalog_demo_interface.png",
+      "image2x": "works/programs/web/data_catalog/stills/data_catalog_demo_interface.png",
+      "alt": "",
+      "credit": "This is a client-side data catalog demo interface over structured metadata utilizing fuzzy search.",
+      "srcUrl": "https://sauuyer.github.io/uop_catalog_demo/",
+      "index_display_1": "data catalog web interface demo",
+      "index_display_2": "programming",
+      "tags": ["grid"],
+      "order": 8
     }
   ]
 }
