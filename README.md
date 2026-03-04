@@ -3,20 +3,15 @@
 
 A minimal, responsive portfolio template for artists, designers, and creative technologists.
   
-This template is designed to be lightweight, clean, and image-forward to showcase projects with visual elements, and display associated metadata for each work.
-
-**Live example:** https://sauuyer.github.io
-
----
-
-## What This Is
-
+This template... 
+- Is designed to be lightweight, clean, and image-forward to showcase projects with visual elements, and display associated metadata for each work
 - A static portfolio site (HTML / CSS / vanilla JavaScript)
 - Image-forward, with optional captions and detailed modal views
 - Responsive, accessible, and open source
 - Hosted for free through GitHub Pages 
 
----
+**Live example:** https://sauuyer.github.io
+
 
 ## Features
 
@@ -31,7 +26,7 @@ This template is designed to be lightweight, clean, and image-forward to showcas
 - About page scaffold included
 - Works are data-driven via a single JSON file
 
----
+
 
 ## Using This as a Template
 
@@ -45,7 +40,7 @@ To create your own copy:
    
 You will not inherit this repository’s commit history if you use the template (rather than fork this repo).
 
----
+
 
 ## Customizing Content
 
@@ -67,6 +62,7 @@ Each work supports fields like:
 - `order`
 
 Fields left empty are handled gracefully.
+
 
 ### Gallery Works
 
@@ -93,22 +89,6 @@ In `index.html` and `about.html`, the contact button uses data attributes:
 
 These are combined at runtime into a visible email address when clicked.
 
----
-
-## Hosting on GitHub Pages
-
-1. Push your repository to GitHub
-2. Go to **Settings → Pages**
-3. Set source to:
-   - Branch: `main`
-   - Folder: `/root`
-4. Save
-
-Your site will be available at:
-
-https://YOUR-USERNAME.github.io
-
----
 
 ## Image Use and Protection
 
